@@ -1,0 +1,25 @@
+{
+  "name": "elections2018-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arturogonzalezp/elections2018-backend.git"
+  },
+  "author": "César Arturo González Pérez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arturogonzalezp/elections2018-backend/issues"
+  },
+  "homepage": "https://github.com/arturogonzalezp/elections2018-backend#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  }
+}
