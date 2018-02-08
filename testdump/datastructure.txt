@@ -1,0 +1,13 @@
+Politico
+{
+    name,
+    username,
+    positive_tweets,
+    negative_tweets
+}
+Partidos
+{
+    name,
+    positive_tweets,
+    negative_tweets
+}
