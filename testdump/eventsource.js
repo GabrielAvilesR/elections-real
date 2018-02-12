@@ -7,17 +7,17 @@ source.onmessage = function(event) {
     content.innerHTML = ""
     content.innerHTML += "<h1>Politicians</h1>"
     for(let i = 0; i < dataJson.politicians.length ; i++){
-        let stringHTML = `<h2>${dataJson.politicians[i].name}</h2>` +
+        let stringHTML = `<h2>${dataJson.politicians[i].politician_name}</h2>` +
                          `<h3>${dataJson.politicians[i].username}</h3>` +
-                         `<p><strong>Positive tweets: </strong>${dataJson.politicians[i].positive_tweets}</p>` +
-                         `<p><strong>Positive tweets: </strong>${dataJson.politicians[i].negative_tweets}</p></br>`
+                         `<p><strong>Positive tweets: </strong>${dataJson.politicians[i].politician_pts}</p>` +
+                         `<p><strong>Positive tweets: </strong>${dataJson.politicians[i].politician_nts}</p></br>`
         content.innerHTML += stringHTML
     }
     content.innerHTML += "<h1>Parties</h1>"
     for(let i = 0; i < dataJson.parties.length ; i++){
-        let stringHTML = `<h2>${dataJson.parties[i].name}</h2>` +
-                         `<p><strong>Positive tweets: </strong>${dataJson.parties[i].positive_tweets}</p>` +
-                         `<p><strong>Positive tweets: </strong>${dataJson.parties[i].negative_tweets}</p></br>`
+        let stringHTML = `<h2>${dataJson.parties[i].party_name}</h2>` +
+                         `<p><strong>Positive tweets: </strong>${dataJson.parties[i].party_pts}</p>` +
+                         `<p><strong>Positive tweets: </strong>${dataJson.parties[i].party_nts}</p></br>`
         content.innerHTML += stringHTML
     }
 }

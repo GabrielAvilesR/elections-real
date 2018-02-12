@@ -35,26 +35,26 @@ export const getLiveMessage = () => {
     let d = new Date()
     return new Promise ((resolve, reject) => {
         jsonfile.readFile('./src/files/politicians.json', (err, obj) => {
-            if(err) reject(err)
+            if(err) return reject(err)
             for(let i = 0; i < obj.length; i++){
                 obj[i].positive_tweets += d.getMilliseconds()
                 obj[i].negative_tweets += (d.getMilliseconds())/2
                 message.politicians.push(obj[i])
             }
             jsonfile.writeFile('./src/files/politicians.json', obj, (err) => {
-                if(err) reject(err)
+                if(err) return reject(err)
             })
             jsonfile.readFile('./src/files/parties.json', (err, obj) => {
-                if(err) reject(err)
+                if(err) return reject(err)
                 for(let i = 0; i < obj.length; i++){
                     obj[i].positive_tweets += d.getMilliseconds()
                     obj[i].negative_tweets += (d.getMilliseconds())/2
                     message.parties.push(obj[i])
                 }
                  message = JSON.stringify(message)
-                 resolve(message)
+                 return resolve(message)
                  jsonfile.writeFile('./src/files/parties.json', obj, (err) => {
-                if(err) reject(err)
+                if(err) return reject(err)
             })
             })
         })

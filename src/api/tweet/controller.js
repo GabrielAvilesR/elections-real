@@ -1,4 +1,5 @@
-import { getAll, getOne, getLiveMessage } from '../../customFunctions/fileDB'
+import { getAll, getOne } from '../../customFunctions/fileDB'
+import { getLiveMessage } from '../../customFunctions/sqlDB'
 
 export const showAll = (req, res, next) => 
     getAll()
