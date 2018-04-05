@@ -8,7 +8,7 @@ import api from './api'
 
 const app = express()
 app.use(cors())
-app.use(wildCardCors)
+//app.use(wildCardCors)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json({limit: '50mb'}))
 app.use(api)

@@ -24,7 +24,6 @@ export const getLiveMessage = () => {
             if(err) return reject(err)
             con.query(party_query + '; ' + politician_query + '; ' + party_politician_query, (err, results, fields) => {
                 if(err) reject(err)
-                console.log("results:", results)
                 let message = {}
                 message.politicians = []
                 message.parties = []
@@ -40,7 +39,6 @@ export const getLiveMessage = () => {
                         if(message.politicians[j].politician_name === results[2][i].politician_name){
                             if(!message.politicians[j].relParties.includes(results[2][i].party_name)){
                                 message.politicians[j].relParties.push(results[2][i].party_name)
-                                console.log("politician:", message.politicians[j].politician_name, " partido REL:", results[2][i].party_name)
                             }
                         }
                     }
