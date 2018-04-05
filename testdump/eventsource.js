@@ -1,4 +1,4 @@
-const source = new EventSource("http://localhost:9000/tweets/live")
+const source = new EventSource("https://elecciones-2018.herokuapp.com/tweets/live", {withCredentials:true})
 source.onmessage = function(event) {
     let data = event.data
     let dataJson = JSON.parse(data)
