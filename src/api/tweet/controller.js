@@ -8,8 +8,7 @@ export const liveStream = (req, res, next) => {
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive',
-        'Access-Control-Allow-Credentials':'true',
-        'Access-Control-Allow-Origin':'null'
+        'Access-Control-Allow-Origin':'*'
     });
     res.write('\n');
  
