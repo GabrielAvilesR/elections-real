@@ -34,7 +34,7 @@ setInterval(() => {
                 console.log(err)
             })
     });
-}, 5000);
+}, 700);
  
 
 
