@@ -9,8 +9,7 @@ export const liveStream = (req, res, next) => {
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive',
         'Access-Control-Allow-Credentials':'true',
-        'Access-Control-Allow-Origin':'',
-        'Vary':'Origin'
+        'Access-Control-Allow-Origin':'null'
     });
     res.write('\n');
  
