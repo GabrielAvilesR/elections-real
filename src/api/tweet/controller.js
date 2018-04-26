@@ -1,4 +1,4 @@
-import { getLiveMessage } from '../../customFunctions/sqlDB'
+import { getLiveMessage, getPoliticianJson } from '../../customFunctions/sqlDB'
 
 //variable global de conecciones
 let openConnections = []
@@ -34,7 +34,13 @@ setInterval(() => {
                 console.log(err)
             })
     });
-}, 700);
- 
+}, 1000);
+
+export const politicianJson = ({params}, res, next) => 
+    getPoliticianJson(params.username).
+        then((message) => {
+            res.status(200).json(message)
+        })
+        .catch(next)
 
 

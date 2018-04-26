@@ -8,12 +8,12 @@ import api from './api'
 
 const app = express()
 app.use(cors())
-//app.use(wildCardCors)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json({limit: '50mb'}))
 app.use(api)
 const server = http.createServer(app)
 
+//mongoose.connect('mongodb://localhost/db', {useMongoClient:true})
 
 setImmediate(() => {
   server.listen(port, ip, () => {

@@ -2,10 +2,14 @@ import mysql from 'mysql'
 
 const party_query = "SELECT party_name, party_pts, party_nts " +
                     "FROM Party"
-const politician_query = "SELECT politician_name, username, politician_pts, politician_nts " +
+const politician_query = "SELECT politician_name, username, politician_pts, politician_nts, politician_na " +
                             "FROM Politician"
 const party_politician_query = "SELECT politician_name, party_name " +
-                                "FROM Politician, Party, Party_politician"                                
+                                "FROM Politician, Party, Party_politician"
+                                
+const politician_json_query = (username) => `SELECT politician_json ` +
+                                            `FROM Politician ` +
+                                            `WHERE username = '${username}'`
 
 
 const pool = mysql.createPool({
@@ -14,7 +18,7 @@ const pool = mysql.createPool({
 	password: "ele20181029384756",
 	database: "mexelections18",
     multipleStatements:true
-});
+})
 
 
 export const getLiveMessage = () => {
@@ -23,7 +27,7 @@ export const getLiveMessage = () => {
         pool.getConnection((err, con) => {
             if(err) return reject(err)
             con.query(party_query + '; ' + politician_query + '; ' + party_politician_query, (err, results, fields) => {
-                if(err) reject(err)
+                if(err) return reject(err)
                 let message = {}
                 message.politicians = []
                 message.parties = []
@@ -51,4 +55,16 @@ export const getLiveMessage = () => {
     })
 }
 
+export const getPoliticianJson = (username) => {
+    return new Promise((resolve, reject) => {
+        pool.getConnection((err, con) => {
+            if(err) return reject(err)
+            con.query(politician_json_query(username), (err, result, fields) => {
+                if(err) return reject(err)
+                return resolve(result)
+                con.release()
+            })
+        })
+    })
+}
 
