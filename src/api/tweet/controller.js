@@ -27,6 +27,7 @@ setInterval(() => {
         let d = new Date();
         getLiveMessage()
             .then((message) => {
+                 resp.write('event: message\n');
                  resp.write('id: ' + d.getTime() + '\n');
                  resp.write('data:' + message +   '\n\n'); // Note the extra newline
             })
