@@ -11,7 +11,6 @@ export const liveStream = (req, res, next) => {
         'Access-Control-Allow-Origin':'*'
     });
     res.write('\n');
- 
     openConnections.push(res);
  
     
@@ -40,8 +39,16 @@ setInterval(() => {
 export const politicianJson = ({params}, res, next) => 
     getPoliticianJson(params.username).
         then((message) => {
-            res.status(200).json(message)
+            message[0].politician_json = JSON.parse(message[0].politician_json)
+            res.status(200).json(message[0])
         })
         .catch(next)
 
 
+export const showAll = (req, res, next) => 
+        getLiveMessage()
+            .then((message) => {
+                message = JSON.parse(message)
+                res.status(200).json(message)
+            })
+            .catch(next)
